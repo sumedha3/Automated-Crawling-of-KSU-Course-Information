@@ -1,0 +1,16 @@
+Read me:
+
+Step 1:
+Install all the dependencies required to run the project. (in requeriments.txt file)
+
+Step 2:
+Install mongoDB compass, for storing the data and use it for the application.
+
+Step 3:
+Open the capstone folder in visual studio code, and run the main.py file
+
+Step 4:
+Once you run the file successfully, you need to open the browser and go to the path 'http://127.0.0.1:5000/home'
+
+Step 5: 
+You can run the application successfully.
