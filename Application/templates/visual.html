@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1>Visuals</h1>
+  
+  <div class="row">
+    {% for visual in visuals %}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <!-- <img class="card-img-top" src="{{ url_for('static', filename='Visual/' + visual) }}" alt="Visual Image"> -->
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{ visual }}</h4>
+          </div>
+          <!-- show image -->
+          <img class="card-img-top" src="{{ url_for('static', filename='Visual/' + visual.split('/')[3]) }}" alt="Visual Image">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

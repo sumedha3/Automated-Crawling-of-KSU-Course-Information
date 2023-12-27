@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Course Offerings</h1>
+
+<!-- Display the Term and Year here -->
+<h3>Term: {{ term }}</h3>
+
+<form method="GET">
+  <div class="input-group mb-3">
+    <input type="text" name="search_query" class="form-control" placeholder="Search by Course Code or Title">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Course Code</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if search_query %}
+                {% for data in courseData if search_query.lower() in data["code"].lower()%}
+                    <tr>
+                        <td scope='row'>{{ data["code"] }}</td>
+                        <td>{{ data["title"]}}</td>
+                        <td>{{ data["description"]}}</td>
+                        <td>{{ data["craditHour"]}}</td>
+                        <td>
+                            <form action="{{url_for('enrollment')}}" method="POST">
+                                <input type="hidden" name="code" value="{{data['code']}}">
+                                <input type="hidden" name="title" value="{{data['title']}}">
+                                <input type="hidden" name="term" value="{{term}}">
+                                <input type="hidden" name="year" value="{{year}}">
+                                <input type="hidden" name="description" value="{{data['description']}}">
+                                <input type="hidden" name="creditHour" value="{{data['creditHour']}}">
+                                <button>Enroll</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for data in courseData[] %}
+                    <tr>
+                        <td scope='row'>{{ data["code"] }}</td>
+                        <td>{{ data["title"]}}</td>
+                        <td>{{ data["description"]}}</td>
+                        <td>{{ data["craditHour"]}}</td>
+                        <td>
+                            <form action="{{url_for('enrollment')}}" method="POST">
+                                <input type="hidden" name="code" value="{{data['code']}}">
+                                <input type="hidden" name="title" value="{{data['title']}}">
+                                <input type="hidden" name="term" value="{{term}}">
+                                <input type="hidden" name="year" value="{{year}}">
+                                <input type="hidden" name="description" value="{{data['description']}}">
+                                <input type="hidden" name="creditHour" value="{{data['creditHour']}}">
+                                <button>Enroll</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

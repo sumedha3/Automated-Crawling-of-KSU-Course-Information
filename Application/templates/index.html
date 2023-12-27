@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Welcome to Universal Tech Academy.</h1>
+
+            {% if session['username'] %}
+                <h3>Let's get started.</h3>
+            {% else %}
+                <p>Already registered? <a href="{{url_for('login') }}">Login</a></p>
+            {% endif %}
+
+            <div style="text-align:left;">
+                <h2>How it works</h2>
+
+                <p>
+                    <b>Step 1:</b> Register for an account. <br>
+                    <b>Step 2:</b> Enroll in a course. <br>
+                    <b>Step 2.1:</b> Check wherther you are enrolled in a course. <br>
+                    <b>Step 2.2:</b> If you are not enrolled in a course, enroll in a course. <br>
+                    <b>Step 2.3:</b> suggest a course. <br>
+                    <b>Step 2.4:</b> If you are enrolled in a course, check your course. <br>
+                    <b>Step 3:</b> Start learning. <br>
+                </p>
+                
+                <p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
